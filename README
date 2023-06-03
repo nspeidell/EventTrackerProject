@@ -1,0 +1,17 @@
+# Overview
+The bird sighting app allows a user to report sightings they have seen, by adding pictures, activity, and description.  They can also edit, and delete those sightings.  In adidtion they can look up sightings by bird.
+
+## Technology
+JPA
+Spring Boot
+Spring Data
+MySQL
+Java
+Postman
+JSON
+Gradle
+Hibernate
+Apache Tomcat
+
+## Lessons Learned
+I learned that JSON is very specific, if the format is off in any wwa ythe app will not work correctly.  I also used the repository with the predefined methods.  That seems to be the easier way to go than the option route.
