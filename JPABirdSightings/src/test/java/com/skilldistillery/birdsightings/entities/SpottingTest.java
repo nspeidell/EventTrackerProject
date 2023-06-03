@@ -2,7 +2,6 @@ package com.skilldistillery.birdsightings.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,13 +13,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-class SpeciesTest {
+class SpottingTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Species species;
-	
+	private Spotting spotting;
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPABirdSightings");
@@ -34,25 +32,25 @@ class SpeciesTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		species = em.find(Species.class, 1);
+		spotting = em.find(Spotting.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		species = null;
+		spotting = null;
 	}
 
 	@Test
 	void test() {
-		assertNotNull(species);
-		assertEquals("Osprey", species.getType());
+		assertNotNull(spotting);
+		assertEquals("hunting", spotting.getActivity());
 	}
 	@Test
-	void test_spotting() {
-		assertNotNull(species);
-		assertNotNull(species.getSpottings());
-		assertTrue(species.getSpottings().size() > 0);
+	void test_species() {
+		assertNotNull(spotting);
+		assertNotNull(spotting.getSpecies());
+		assertEquals(1, spotting.getSpecies().getId());
 	}
 
 }

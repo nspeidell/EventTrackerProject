@@ -14,71 +14,72 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.skilldistillery.birdsightings.entities.Species;
-import com.skilldistillery.birdsightings.services.SpeciesService;
+
+import com.skilldistillery.birdsightings.entities.Spotting;
+import com.skilldistillery.birdsightings.services.SpottingService;
 
 @RestController
 @RequestMapping("api")
-public class SpeciesController {
-	
+public class SpottingController {
 @Autowired
-	private SpeciesService speciesService;
-	
-@GetMapping("species")
-	public List<Species> listAllSpecies() {
-		return speciesService.listAllSpecies();
-	}
-@GetMapping("species/{speciesId}")
-public Species getSpecies(@PathVariable Integer speciesId, HttpServletResponse res) {
-		Species species = speciesService.getSpecies(speciesId);
-		if (species == null) {
-			res.setStatus(404);
-		}
-	return species;
+private SpottingService spottingService;
+
+
+@GetMapping("spotting")
+public List<Spotting> listAllSpotting() {
+	return spottingService.listAllSpotting();
 }
-@PostMapping("species")
-public Species createSpecies(
+@GetMapping("spotting/{spottingId}")
+public Spotting getSpotting(@PathVariable Integer spottingId, HttpServletResponse res) {
+	Spotting spotting = spottingService.getSpotting(spottingId);
+	if (spotting == null) {
+		res.setStatus(404);
+	}
+return spotting;
+}
+@PostMapping("spottings")
+public Spotting createSpotting(
 		HttpServletResponse res, 
 		HttpServletRequest req,
-		@RequestBody Species species
+		@RequestBody Spotting spotting
 ) {
 	try {
-		species = speciesService.create(species);
+		spotting = spottingService.create(spotting);
 		res.setStatus(201);
 		StringBuffer url = req.getRequestURL();
-		url.append("/").append(species.getId());
+		url.append("/").append(spotting.getId());
 		res.setHeader("Location", url.toString());
 	} catch (Exception e) {
 		e.printStackTrace();
 		res.setStatus(400);
-		species = null;
+		spotting = null;
 	}
-	return species;
+	return spotting;
 }
 
-@PutMapping("species/{speciesId}")
-public Species updateSpecies(
+@PutMapping("spottings/{spottingId}")
+public Spotting updateSpotting(
 		HttpServletResponse res,
-		@PathVariable Integer speciesId,
-		@RequestBody Species species
+		@PathVariable Integer spottingId,
+		@RequestBody Spotting spotting
 ) {
 	try {
-		species = speciesService.update(speciesId, species);
-		if (species == null) {
+		spotting = spottingService.update(spottingId, spotting);
+		if (spotting == null) {
 			res.setStatus(404);
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
 		res.setStatus(400);
-		species = null;
+		spotting = null;
 	}
-	return species;
+	return spotting;
 }
 
-@DeleteMapping("species/{speciesId}")
+@DeleteMapping("spottings/{spottingId}")
 
-public void deleteSpecies(HttpServletResponse res, @PathVariable Integer speciesId) {
-	if ( speciesService.delete(speciesId) ) {
+public void deleteSpotting(HttpServletResponse res, @PathVariable Integer spottingId) {
+	if ( spottingService.delete(spottingId) ) {
 		res.setStatus(204);
 	}
 	else {
