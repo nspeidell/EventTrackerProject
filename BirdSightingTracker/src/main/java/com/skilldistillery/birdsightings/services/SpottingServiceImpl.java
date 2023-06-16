@@ -42,6 +42,7 @@ public class SpottingServiceImpl implements SpottingService {
 			managed.setLocationAddress(spotting.getLocationAddress());
 			managed.setNotes(spotting.getNotes());
 			managed.setPicture(spotting.getPicture());
+			managed.setSpecies(spotting.getSpecies());
 			managed.setTimeDate(spotting.getTimeDate());
 			return spottingRepo.saveAndFlush(managed);
 
@@ -56,8 +57,11 @@ public class SpottingServiceImpl implements SpottingService {
 		if (spottingRepo.existsById(spottingId)) {
 			spottingRepo.deleteById(spottingId);
 			deleted = true;
+			return deleted;
 		}
+		else {
 		return false;
+		}
 	}
 
 }

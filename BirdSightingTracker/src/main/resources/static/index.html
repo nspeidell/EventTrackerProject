@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/script.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/main.css">
+<title>It's a Bird</title>
+</head>
+<body>
+
+	<main class="container-fluid">
+		<h1>Bird Spottings</h1>
+
+		<div id="spottingListDiv">
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+					</tr>
+				</thead>
+				<tbody id="spottingTableBody"></tbody>
+			</table><br>
+			<h5>Number of Osprey Sightings:</h5>
+			<p id="count"></p>
+		</div>
+		<hr>
+		<div id="SpottingDetailsDiv"></div>
+		<hr>
+		<div id="newSpottingDiv"></div>
+		<h3>Add a New Spotting</h3>
+		<form class="form" name='newSpottingForm'>
+			<label for="address">Address</label> <br> <input name="address"
+				type="text"> <br> <label for="activity">Activity</label>
+			<br> <input name="activity" type="text"> <br> <label
+				for="species">Choose a Species:</label><br> <select
+				name="species" id="species">
+				<option value="1">Osprey</option>
+				<option value="2">Bald Eagle</option>
+				<option value="3">American Robin</option>
+				<option value="4">Mallard Duck</option>
+			</select> <br>
+			<label for="notes">Notes</label><br> <input name="notes"
+				type="text"> <br> <label for="picture">Picture
+				URL</label><br> <input name="picture" type="text"> <br> <label
+				for="timeDate">Time and Date (xxxx-xx-xxT00:00:00)</label><br>
+			<input name="timeDate" type="text"> <br>
+
+
+			<button class="btn btn-success" name="addSpottingButton">Add
+				Spotting</button>
+		</form>
+		</div>
+		<hr>
+		<div id="updateSpotting">
+			<h3>Update a Spotting</h3>
+			<form class="form" name='updateSpottingForm'>
+				<label for="id">Spotting Id</label><br> <input name="id"
+					type="text"> <br> <label for="address">Address</label>
+				<br> <input name="address" type="text"> <br> <label
+					for="activity">Activity</label> <br> <input name="activity"
+					type="text"> <br> <label for="species">Choose
+					a Species:</label><br> <select name="species" id="species">
+					<option value="1">Osprey</option>
+					<option value="2">Bald Eagle</option>
+					<option value="3">American Robin</option>
+					<option value="4">Mallard Duck</option>
+				</select><br>
+				 <label for="notes">Notes</label><br> <input name="notes"
+					type="text"> <br> <label for="picture">Picture
+					URL</label><br> <input name="picture" type="text"> <br> <label
+					for="timeDate">Time and Date (xxxx-xx-xxT00:00:00)</label><br>
+				<input name="timeDate" type="text"> <br>
+
+
+				<button class="btn btn-success" name="updateSpottingButton">Update
+					Spotting</button>
+			</form>
+		</div>
+	</main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.logoImageThumbnail {
+	height: 40px;
+	width: 40px;
+}
+.form {
+	text-align: center;
+	 background: rgba(0, 128, 0, 0.6)
+}
+#updateSpotting {
+	
+		 background: rgba(0, 128, 0, 0.6)
+}
+#spottingListDiv {
+	 background: rgba(0, 128, 0, 0.6)
+}
+h1 {
+	text-align: center;
+}
