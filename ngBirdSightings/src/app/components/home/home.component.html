@@ -1,0 +1,85 @@
+
+<div id="spottingListDiv" *ngIf="! selected" class="container">
+<h1>Welcome To Bird Spotting Tracker</h1><br><br>
+<h3>Recent Sightings</h3><br>
+<table>
+<thead>
+<tr>
+<th>Photo</th>
+<th>Species</th>
+<th>Activity</th>
+<th>Time Of Event</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let spotting of spottingList">
+  <td  (click)="displaySpotting(spotting)"><img class="image" src="{{spotting.picture}}"></td>
+  <td>{{spotting.species.type}}</td>
+  <td (click)="displaySpotting(spotting)">{{spotting.activity}}</td>
+<td  (click)="displaySpotting(spotting)">{{spotting.timeDate}}</td>
+</tr>
+</tbody>
+</table>
+<div class="row">
+  <hr>
+  <h5>Activity:</h5><br>
+  <input class="col form-control" type="text" name="task" [(ngModel)]="newSpotting.activity" /><br>
+  <h5>Location:</h5><br>
+  <input class="col form-control" type="text" name="task" [(ngModel)]="newSpotting.locationAddress" /><br>
+  <h5>Notes:</h5><br>
+  <input class="col form-control" type="text" name="task" [(ngModel)]="newSpotting.notes" /><br>
+  <h5>Picture:</h5><br>
+  <input class="col form-control" type="text" name="task" [(ngModel)]="newSpotting.picture" />
+  <h5>Time and Date:</h5><br>
+  <input class="col form-control" type="text" name="task" [(ngModel)]="newSpotting.timeDate" />
+  <h5>Species:</h5><br>
+  <input class="col form-control" type="text" name="task" [(ngModel)]="newSpotting.species.id" />
+  <br>
+  <button class="col-auto btn btn-success" (click)="addSpotting(newSpotting)">Add Spotting</button>
+</div>
+</div>
+<div id="spottingDetailDiv" *ngIf="selected && ! editSpotting" class="container">
+  <h4>ID: {{selected.id}}</h4>
+  <img src="{{selected.picture}}">
+  <div>
+    <h5>Description:</h5>
+    Species: {{selected.species.type}}
+  </div>
+  <p>Activity: {{selected.activity}}</p>
+  <p>Notes: {{selected.notes}}</p>
+  <button class="btn btn-outline-info" (click)="displayTable()">Back</button>
+  <button class="btn btn-outline-primary" (click)="setEditSpotting()">Edit</button>
+  <span class="btn btn-danger" (click)="deleteSpotting(selected.id)">X</span>
+</div>
+<div id="SpottingEdit" *ngIf="editSpotting" class="container">
+  <form>
+    <div class="row">
+      <label class="col-auto form-label" for="activity">Activity</label>
+      <input class="col form-control" type="text" name="activity" [(ngModel)]="editSpotting.activity" /> <br />
+    </div>
+    <div class="row">
+      <label class="col-auto form-label" for="location">Location</label>
+      <input class="col form-control" type="text" name="location" [(ngModel)]="editSpotting.locationAddress" />
+    </div>
+    <div class="form-check">
+      <label class="col form-check-label" for="notes">Notes</label>
+      <input class="col form-check-input" type="text" name="notes" [(ngModel)]="editSpotting.notes" />
+    </div>
+    <div class="form-check">
+      <label class="col form-check-label" for="picture">Picture Url</label>
+      <input class="col form-check-input" type="text" name="picture" [(ngModel)]="editSpotting.picture" />
+    </div>
+    <div class="form-check">
+      <label class="col form-check-label" for="species">Species</label>
+      <input class="col form-check-input" type="text" name="species" [(ngModel)]="editSpotting.species.id" />
+    </div>
+    <div class="form-check">
+      <label class="col form-check-label" for="timeDate">Completed</label>
+      <input class="col form-check-input" type="text" name="timeDate" [(ngModel)]="editSpotting.timeDate" />
+    </div>
+    <div class="row">
+      <button class="btn btn-info col-auto" (click)="editSpotting = null">Cancel</button>
+      <button class="btn btn-primary col-auto" (click)="updateSpotting(editSpotting)">Save</button>
+    </div>
+  </form>
+</div>

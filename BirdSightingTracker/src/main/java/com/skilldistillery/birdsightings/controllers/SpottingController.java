@@ -40,7 +40,7 @@ public class SpottingController {
 		return spotting;
 	}
 
-	@PostMapping("spottings")
+	@PostMapping("spotting")
 	public Spotting createSpotting(HttpServletResponse res, HttpServletRequest req, @RequestBody Spotting spotting) {
 		try {
 			spotting = spottingService.create(spotting);
@@ -56,7 +56,7 @@ public class SpottingController {
 		return spotting;
 	}
 
-	@PutMapping("spottings/{spottingId}")
+	@PutMapping("spotting/{spottingId}")
 	public Spotting updateSpotting(HttpServletResponse res, @PathVariable Integer spottingId,
 			@RequestBody Spotting spotting) {
 		System.out.println("hitting the update controller");
@@ -74,7 +74,7 @@ public class SpottingController {
 		return spotting;
 	}
 
-	@DeleteMapping("spottings/{spottingId}")
+	@DeleteMapping("spotting/{spottingId}")
 
 	public void deleteSpotting(HttpServletResponse res, @PathVariable Integer spottingId) {
 		boolean result = spottingService.delete(spottingId);
